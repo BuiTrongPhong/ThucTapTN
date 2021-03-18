@@ -1,0 +1,93 @@
+﻿
+@model PagedList.IPagedList<WebApplication3.Server.EF.SanPham>
+@using PagedList.Mvc;
+@{
+    Layout = "~/Views/_Shared/_LayoutClient.cshtml";
+}
+
+<link href="~/Assets/client/css/paginator.css" rel="stylesheet" />
+<div class="container">
+    <div class="product-list__container">
+        <div class="row">
+            <div class="col-3">
+                <div class="product-filter">
+                    <div class="product-filter__pirce mb-5 " style="border: 1px solid #999;">
+                        @Html.Partial("~/Views/_Shared/_FilterProductBasePrice.cshtml")
+                    </div>
+
+                    <div class="product-filter__size" style="border: 1px solid #999;">
+                        @Html.Partial("~/Views/_Shared/_FilterProductBaseSize.cshtml")
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-9">
+                <div class="product-list pl-4 pr-4 ">
+                    <div class="product-list__title mb-4 d-flex justify-content-between">
+                        <h3>@ViewBag.title</h3>
+                        <div>
+                            @Html.Partial("~/Views/_Shared/_OrderProduct.cshtml")
+                        </div>
+                    </div>
+                    <div class="row">
+                        @if (Model.PageCount == 0)
+                        {
+                            <div class="text-center d-flex justify-content-center w-100 mt-5"><h5 class="">Không có sản phẩm nào!</h5></div>
+                        }
+                        else
+                        {
+                            foreach (var item in Model)
+                            {
+                                <div class="col-md-3 col-sm-6">
+                                    <div class="single-shop-product">
+                                        <div class="product-upper">
+                                            <img onclick="@("window.location.href='" + @Url.Action("Details", "ChiTietSanPham", new { id = item.spId }) + "'");" src="~/Images/@item.image" alt="">
+                                        </div>
+                                        <h2><a href="" onclick="@("window.location.href='" + @Url.Action("Details", "ChiTietSanPham", new { id = item.spId }) + "'");">@Html.DisplayFor(modelItem => item.spName)</a></h2>
+                                        <div class="product-carousel-price">
+                                            <ins>
+                                                @{
+                                                    var price = Convert.ToDecimal(@item.price).ToString("#,##0");
+                                                    <div>@price đ</div>
+                                                }
+                                            </ins>
+                                            <del>
+                                                @if (@item.comparePrice > 0)
+                                                {
+                                                    var comparePrice = Convert.ToDecimal(@item.comparePrice).ToString("#,##0");
+                                                    <div><s>@comparePrice đ</s></div>
+                                                }
+                                            </del>
+                                        </div>
+
+                                        <div class="product-option-shop">
+                                            <a class="add_to_cart_button" onclick="addCart('@item.spId',' @item.spName', '@item.price', '@item.image' )" data-quantity="1" data-product_sku="" data-product_id="70" rel="nofollow" href="#">Add to cart</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        }
+
+                    </div>
+                    <div>
+                        <div class="pages text-center mt-4 d-flex justify-content-center">
+                            @Html.PagedListPager(Model, page => Url.Action("Shop",
+                            new { page, price = ViewBag.price, filterType = ViewBag.filterType, size = ViewBag.size, currentFilter = ViewBag.CurrentFilter }), new PagedListRenderOptions
+                            {
+                                LiElementClasses = new string[] { "page-item" }
+                            })
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+</div>
+<style>
+    .single-shop-product h2 {
+        font-size: 20px;
+        margin: 10px 0;
+        min-height: 68px;
+    }
+</style>

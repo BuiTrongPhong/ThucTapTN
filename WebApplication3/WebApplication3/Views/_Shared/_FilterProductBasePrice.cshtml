@@ -1,0 +1,52 @@
+﻿
+
+<h5 class="pt-3 pb-3 pr-3 pl-3 bg-gray mb-0">Khoảng giá</h5>
+<div class="pt-3 pb-3 pr-3 pl-3 ">
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="exampleRadios1" id="all" @(ViewBag.price == "0" ? "checked" : "") onchange="@("window.location.href='" + @Url.Action(ViewBag.action, "Collection", new { price = 0, filterType = "all", size = ViewBag.size, category =  ViewBag.title, typeMaleorFemale = ViewBag.filterTypeMaleorFemale, sortOrder=ViewBag.sortOrder, sortActive=ViewBag.sortActive}) + "'");">
+        <label class="form-check-label" for="all">
+            Tất cả
+        </label>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios2" @(ViewBag.price == "5000000" ? "checked" : "") onchange="@("window.location.href='" + @Url.Action(ViewBag.action, "Collection", new { price = "5000000", filterType = "lesser", size = ViewBag.size, category =  ViewBag.title, typeMaleorFemale = ViewBag.filterTypeMaleorFemale, sortOrder=ViewBag.sortOrder, sortActive=ViewBag.sortActive}) + "'");">
+        <label class="form-check-label" for="exampleRadios2">
+            Nhỏ hơn 5,000,000₫
+        </label>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios3" @(ViewBag.price == "5000000-10000000" ? "checked" : "") onchange="@("window.location.href='" + @Url.Action(ViewBag.action, "Collection", new { price = "5000000-10000000", filterType ="range", size = ViewBag.size, category =  ViewBag.title, typeMaleorFemale = ViewBag.filterTypeMaleorFemale, sortOrder=ViewBag.sortOrder, sortActive=ViewBag.sortActive}) + "'");">
+        <label class="form-check-label" for="exampleRadios3">
+            Từ 5,000,000₫ - 1,000,000₫
+        </label>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios4" @(ViewBag.price == "10000000-15000000" ? "checked" : "") onchange="@("window.location.href='" + @Url.Action(ViewBag.action, "Collection", new { price = "10000000-15000000", filterType ="range", size = ViewBag.size, category =  ViewBag.title, sortOrder=ViewBag.sortOrder, sortActive=ViewBag.sortActive}) + "'");">
+        <label class="form-check-label" for="exampleRadios4">
+            Từ 10,000,000₫ - 15,000,000₫
+        </label>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios5" @(ViewBag.price == "15000000-2000000" ? "checked" : "") onchange="@("window.location.href='" + @Url.Action(ViewBag.action, "Collection", new { price = "15000000-2000000", filterType ="range", size = ViewBag.size, category =  ViewBag.title, sortOrder=ViewBag.sortOrder, sortActive=ViewBag.sortActive}) + "'");">
+        <label class="form-check-label" for="exampleRadios5">
+            Từ 15,000,000₫ - 20,000,000₫
+        </label>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios6" @(ViewBag.price == "20000000-30000000" ? "checked" : "") onchange="@("window.location.href='" + @Url.Action(ViewBag.action, "Collection", new { price = "20000000-30000000", filterType ="range", size = ViewBag.size, category =  ViewBag.title, sortOrder=ViewBag.sortOrder, sortActive=ViewBag.sortActive}) + "'");">
+        <label class="form-check-label" for="exampleRadios6">
+            Từ 20,000,000₫ - 30,000,000₫
+        </label>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="exampleRadios1" id="exampleRadios7" @(ViewBag.price == "30000000" ? "checked" : "") onchange="@("window.location.href='" + @Url.Action(ViewBag.action, "Collection", new { price = "30000000", filterType = "bigger", size = ViewBag.size, category =  ViewBag.title, sortOrder=ViewBag.sortOrder, sortActive=ViewBag.sortActive}) + "'");">
+        <label class="form-check-label" for="exampleRadios7">
+            Lớn hơn 30,000,000₫
+        </label>
+    </div>
+</div>
+<style>
+    .form-check-label {
+        margin-left:20px;
+    }
+</style>

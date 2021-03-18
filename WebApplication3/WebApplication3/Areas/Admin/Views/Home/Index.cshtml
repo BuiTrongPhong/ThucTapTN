@@ -1,0 +1,24 @@
+﻿
+
+@{
+    //ViewBag.Title = "Bảng điều khiển";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div class="ml-3">
+        <h3>Chào, @HttpContext.Current.Session["HoAdmin"] @HttpContext.Current.Session["TenAdmin"]</h3>
+        <div>
+            <a href="@Url.Action("Logout", "Home")">Đăng xuất</a>
+        </div>
+    </div>
+</body>
+</html>

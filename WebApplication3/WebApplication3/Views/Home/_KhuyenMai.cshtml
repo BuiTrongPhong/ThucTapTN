@@ -1,0 +1,31 @@
+﻿@model IEnumerable<WebApplication3.Server.EF.SanPham>
+@foreach (var item in Model)
+{
+<div class="single-wid-product">
+    <a href="single-product.html"><img src="~/Images/@item.image" alt="" class="product-thumb"></a>
+    <h2><a href="#" onclick="@("window.location.href='" + @Url.Action("Details", "ChiTietSanPham", new { id = item.spId }) + "'");">@Html.DisplayFor(modelItem => item.spName)</a></h2>
+    <div class="product-wid-rating">
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+        <i class="fa fa-star"></i>
+    </div>
+    <div class="product-wid-price" style="
+    display: flex;
+    flex-direction: column;">
+        <ins>
+            @{
+                var price = Convert.ToDecimal(@item.price).ToString("#,##0");
+                <div>@price đ</div>
+           }
+            </ins> <del>
+    @if (@item.comparePrice > 0)
+    {
+        var comparePrice = Convert.ToDecimal(@item.comparePrice).ToString("#,##0");
+        <div><s>@comparePrice đ</s></div>
+    }
+        </del>
+    </div>
+</div>
+}

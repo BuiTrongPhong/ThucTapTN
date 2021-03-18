@@ -1,0 +1,36 @@
+﻿
+<h5 class="pt-3 pb-3 pr-3 pl-3 bg-gray mb-0">Ram</h5>
+<div class="pt-3 pb-3 pr-3 pl-3 ">
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="exampleRadios2" id="allSize" @(ViewBag.size == "all" ? "checked" : "") onchange="@("window.location.href='" + @Url.Action(ViewBag.action, "Collection", new { size = "all", filterType = ViewBag.filterType, price = ViewBag.price, category =  ViewBag.title, sortOrder=ViewBag.sortOrder, sortActive=ViewBag.sortActive}) + "'");">
+        <label class="form-check-label" for="allSize">
+            Tất cả
+        </label>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="exampleRadios2" id="35" @(ViewBag.size == "16" ? "checked" : "") onchange="@("window.location.href='" + @Url.Action(ViewBag.action, "Collection", new { size = "16", filterType = ViewBag.filterType, price = ViewBag.price, category =  ViewBag.title, sortOrder=ViewBag.sortOrder, sortActive=ViewBag.sortActive}) + "'");">
+        <label class="form-check-label" for="35">
+            16G
+        </label>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="exampleRadios2" id="36" @(ViewBag.size == "32" ? "checked" : "") onchange="@("window.location.href='" + @Url.Action(ViewBag.action, "Collection", new {size = "32", filterType = ViewBag.filterType, price = ViewBag.price, category =  ViewBag.title, sortOrder=ViewBag.sortOrder, sortActive=ViewBag.sortActive}) + "'");">
+        <label class="form-check-label" for="36">
+            32G
+        </label>
+    </div>
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="exampleRadios2" id="37" @(ViewBag.size == "128" ? "checked" : "") onchange="@("window.location.href='" + @Url.Action(ViewBag.action, "Collection", new { size = "128", filterType = ViewBag.filterType, price = ViewBag.price, category =  ViewBag.title, sortOrder=ViewBag.sortOrder, sortActive=ViewBag.sortActive}) + "'");">
+        <label class="form-check-label" for="37">
+            128G
+        </label>
+    </div>
+    <div class="form-check">
+
+        <input class="form-check-input" type="radio" name="exampleRadios2" id="38" @(ViewBag.size == "256" ? "checked" : "") onchange="@("window.location.href='" + @Url.Action(ViewBag.action, "Collection", new { size = "256", filterType = ViewBag.filterType, price = ViewBag.price, category =  ViewBag.title, sortOrder=ViewBag.sortOrder, sortActive=ViewBag.sortActive}) + "'");">
+        <label class="form-check-label" for="38">
+            256G
+        </label>
+    </div>
+    
+</div>
